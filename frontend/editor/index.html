@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./editor.css">
+    <title>SciLog Question DB Editor</title>
+</head>
+
+<body>
+    <ul id="questionList">
+    </ul>
+
+    <p><button id="selectDirBtn">디렉토리 열기</button></p>
+    <p><button id="newQuestionBtn" disabled>새 문제 만들기</button></p>
+
+    <form id="questionForm">
+        <fieldset disabled>
+            <p>
+                <label for="questionIdInput">문제 ID</label>
+                <input type="text" id="questionIdInput" name="id">
+            </p>
+            <p>
+                <label for="questionYearInput">연도</label>
+                <input type="number" id="questionYearInput" name="year">
+            </p>
+            <p>
+                <label for="questionSubjectSelect">과목</label>
+                <select name="subject" id="questionSubjectSelect">
+                    <option value="cs">컴퓨터공학</option>
+                    <option value="math">수학</option>
+                    <option value="phys">물리학</option>
+                    <option value="chem">화학</option>
+                    <option value="bio">생명과학</option>
+                    <option value="unknown">기타</option>
+                </select>
+            </p>
+
+            <h3>문제</h3>
+            <div id="questionEditor"></div>
+
+            <p>
+                <label for="questionShortAnswerInput">정답</label>
+                <input type="text" id="questionShortAnswerInput">
+            </p>
+
+            <h3>해설</h3>
+            <div id="questionLongAnswerEditor"></div>
+
+            <!-- 엔터 키로 폼이 제출되는 걸 막기 위한 가짜 버튼 -->
+            <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+
+            <p><button type="submit">입력</button></p>
+        </fieldset>
+    </form>
+
+    <script type="module" src="./editor.mjs"></script>
+</body>
+
+</html>
