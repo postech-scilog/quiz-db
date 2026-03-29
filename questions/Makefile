@@ -4,7 +4,10 @@ DEPS := $(shell find ./src -name '*' -print)
 
 all: questions.db
 
-questions.db: $(DEPS)
+questions.db: $(DEPS) lint
 	@./scripts/make_db.py
+
+lint:
+	@./scripts/lint.py
 	
-.PHONY: all
+.PHONY: all lint
