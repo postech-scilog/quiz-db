@@ -2,12 +2,9 @@
 
 DEPS := $(shell find ./src -name '*' -print)
 
-all: questions.db assets
+all: questions.db
 
 questions.db: $(DEPS)
 	@./scripts/make_db.py
-
-assets: $(DEPS)
-	@./scripts/make_assets.py
 	
 .PHONY: all
