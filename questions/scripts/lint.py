@@ -127,16 +127,6 @@ class CheckNoEmptyQuestion(Check):
     def default_msg(self):
         return f'{QUESTION_FILENAME} should not be empty'
     
-class CheckNoEmptyAnswer(Check):
-    def __call__(self, q):
-        return CheckResult(q, self, len(q.long_answer_text.strip()) > 0)
-    
-    def rule_name(self):
-        return 'no-empty-answer'
-
-    def default_msg(self):
-        return f'{LONG_ANSWER_FILENAME} should not be empty'
-    
 class CheckQuestionNoInvalidRef(Check):
     def __call__(self, q):
         invalid_refs = q.question_refs - q.assets
@@ -186,7 +176,6 @@ checks = [
     CheckYearRange(),
     CheckSubject(),
     CheckNoEmptyQuestion(),
-    CheckNoEmptyAnswer(),
     CheckQuestionNoInvalidRef(),
     CheckLongAnswerNoInvalidRef(),
     CheckNoUnusedAsset(),
