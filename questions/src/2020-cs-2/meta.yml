@@ -1,0 +1,4 @@
+id: 2020-cs-2
+year: 2020
+subject: cs
+short_answer: O($n^{log_{2} 7}$) 또는 O(n^2.807...)
