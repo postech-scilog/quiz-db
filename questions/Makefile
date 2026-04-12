@@ -2,12 +2,15 @@
 
 DEPS := $(shell find ./src -name '*' -print)
 
-all: questions.db
+all: lint questions.db
 
-questions.db: $(DEPS) lint
+questions.db: $(DEPS)
 	@./scripts/make_db.py
 
 lint:
 	@./scripts/lint.py
+
+clean:
+	rm -rf questions.db
 	
-.PHONY: all lint
+.PHONY: all lint clean
