@@ -73,12 +73,21 @@ def main():
 
     # questions 테이블 생성.
     cur.execute(
-        "CREATE TABLE questions(id, year, subject, question_text, short_answer, long_answer_text)"
+        """
+        CREATE TABLE questions(
+            id PRIMARY KEY, 
+            year, 
+            subject, 
+            question_text, 
+            short_answer, 
+            long_answer_text
+        )
+        """
     )
     cur.executemany("INSERT INTO questions VALUES(?, ?, ?, ?, ?, ?)", all_question_rows)
 
     # assets 테이블 생성.
-    cur.execute("CREATE TABLE assets(name, data)")
+    cur.execute("CREATE TABLE assets(name PRIMARY KEY, data)")
     for data_path, asset_path in all_assets.items():
         with data_path.open("rb") as f:
             data = f.read()
