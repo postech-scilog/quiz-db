@@ -1,0 +1,16 @@
+# git 관련 파일들
+.git/
+.github/
+.gitignore
+
+# 개발 관련 파일
+.vscode/
+
+# 의존성 및 캐시
+__pycache__/
+node_modules/
+
+# 빌드 아티펙트 (컨테이너 안에서 빌드됨)
+frontend/dist
+questions/questions.db
+
