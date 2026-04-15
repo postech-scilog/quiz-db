@@ -3,7 +3,7 @@ import { UserError } from "../error.ts";
 
 export default function errorHandler(
   error: Error,
-  _req: Request,
+  req: Request,
   res: Response,
   next: NextFunction,
 ) {
@@ -14,7 +14,7 @@ export default function errorHandler(
     return next(error);
   }
 
-  console.error(error);
+  req.log.error(error);
 
   if (error instanceof UserError) {
     res.status(error.code).json({
