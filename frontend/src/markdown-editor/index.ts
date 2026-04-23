@@ -5,7 +5,7 @@ import {
   registerMarkdownShortcuts,
   type Transformer,
 } from "@lexical/markdown";
-import { $getRoot, $insertNodes, type LexicalEditor, UpdateListenerPayload } from "lexical";
+import { $getRoot, $insertNodes, type LexicalEditor, type UpdateListenerPayload } from "lexical";
 import { createTransformers, MarkdownEditorExtension } from "./extensions";
 import { $createImageNode } from "./extensions/Image";
 import "./theme.css";

@@ -84,6 +84,7 @@ async function readQuestion() {
 
     const metaText = await readFromHandle(qDirHandle, "meta.yml");
     if (metaText) {
+      // biome-ignore lint/suspicious/noExplicitAny: yaml.load의 타입을 제대로 표현할 방법이 없음.
       const meta = yaml.load(metaText) as any;
       elems.id.value = meta.id || qDirHandle.name;
       elems.year.value = meta.year || "";
