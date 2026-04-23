@@ -1,17 +1,33 @@
 {
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@stylistic/eslint-plugin": "^5.10.0",
-    "eslint": "^10.1.0",
-    "globals": "^17.4.0",
+    "@biomejs/biome": "2.4.12",
+    "@types/js-yaml": "^4.0.9",
+    "@types/wicg-file-system-access": "^2023.10.7",
     "vite": "^8.0.2"
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "npm run check && vite build",
+    "preview": "vite preview",
+    "check": "npm run check:types && npm run check:biome",
+    "check:types": "tsc",
+    "check:biome": "npx @biomejs/biome check",
+    "fix": "npx @biomejs/biome check --write"
   },
   "dependencies": {
-    "@toast-ui/editor": "^3.2.2"
+    "@lexical/code": "^0.43.0",
+    "@lexical/code-prism": "^0.43.0",
+    "@lexical/extension": "^0.43.0",
+    "@lexical/history": "^0.43.0",
+    "@lexical/link": "^0.43.0",
+    "@lexical/list": "^0.43.0",
+    "@lexical/markdown": "^0.43.0",
+    "@lexical/rich-text": "^0.43.0",
+    "@lexical/table": "^0.43.0",
+    "@lexical/utils": "^0.43.0",
+    "@tailwindcss/vite": "^4.2.4",
+    "js-yaml": "^4.1.1",
+    "katex": "^0.16.45",
+    "lexical": "^0.43.0"
   }
 }

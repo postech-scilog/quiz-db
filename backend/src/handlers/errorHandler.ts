@@ -14,7 +14,7 @@ export default function errorHandler(
     return next(error);
   }
 
-  req.log.error(error);
+  req.log.error(error)
 
   if (error instanceof UserError) {
     res.status(error.code).json({

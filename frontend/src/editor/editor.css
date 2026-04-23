@@ -1,3 +1,7 @@
 fieldset:disabled {
     pointer-events: none;
 }
+
+#error {
+    color: red;
+}
