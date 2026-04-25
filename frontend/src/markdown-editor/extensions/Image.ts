@@ -104,22 +104,25 @@ export function createImageTransformer(importHelper: FileImportHelper): TextMatc
     importRegExp: IMAGE_REGEX,
     regExp: IMAGE_REGEX,
     replace(textNode: TextNode, match: RegExpMatchArray): void {
-      const [, altText, urlStr] = match;
+      const [, altText, url] = match;
 
       // 이미지 URL이 로컬 파일을 가리키는지, 아니면 http 상 문서를 가리키는지 확인.
-      // 로컬 파일을 가리킬 경우 `importHelper` 를 이용해 blob URL을 찾고 src로 사용.
-      let url = "";
-      if (!urlStr.startsWith("http")) {
-        const resolved = importHelper(urlStr);
-        if (!resolved) throw new Error(`Can't resolve path '${urlStr}' to blob URL`);
-        url = resolved;
+      // 로컬 파일을 가리킬 경우 `importHelper` 를 이용해 URL을 blob URL로 변환한 후 src 속성으로 사용하고,
+      // 실제 URL은 markdownSrc 속성으로 별도로 기록
+      let src = "";
+      let markdownSrc = null;
+      if (!url.startsWith("http")) {
+        const resolved = importHelper(url);
+        if (!resolved) throw new Error(`Can't resolve path '${url}' to blob URL`);
+        src = resolved;
+        markdownSrc = url;
       } else {
-        url = urlStr;
+        src = url;
       }
 
       const imageNode = $createImageNode({
-        src: url,
-        markdownSrc: url,
+        src,
+        markdownSrc,
         alt: altText,
       });
       textNode.replace(imageNode);

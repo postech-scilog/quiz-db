@@ -98,10 +98,13 @@ async function readQuestion() {
     const attachments: Record<string, Blob> = {};
     for await (const handle of qDirHandle.values()) {
       if (handle.kind !== "file") continue;
+      if (["meta.yml", "question.md", "answer.md"].includes(handle.name)) continue;
       const file = await handle.getFile();
       attachments[handle.name] = file;
     }
 
+    // 모든 첨부파일은 문제 본문에 사용되는지, 해설에 사용되는지 구분 없이 동일한 디렉토리에 저장되고, 따라서 현재로썬
+    // 이들을 구분할 수 없음. 그러므로 모든 첨부파일들을 포함하는 `attachment` 객체를 둘 다에게 전달.
     elems.questionEditor.fromMarkdown(await readFromHandle(qDirHandle, "question.md"), attachments);
     elems.answerEditor.fromMarkdown(await readFromHandle(qDirHandle, "answer.md"), attachments);
     isDirty = false;
@@ -131,13 +134,17 @@ async function saveQuestion(e: SubmitEvent) {
 
     const qData = elems.questionEditor.toMarkdown();
     await writeToHandle(qDirHandle, "question.md", qData.markdown);
-    for (const [name, blob] of Object.entries(qData.attachments)) {
-      await writeToHandle(qDirHandle, name, blob);
-    }
 
     const aData = elems.answerEditor.toMarkdown();
     await writeToHandle(qDirHandle, "answer.md", aData.markdown);
-    for (const [name, blob] of Object.entries(aData.attachments)) {
+
+    // 문제 본문과 해설에 사용되는 첨부 파일들은 구분 없이 동일한 디렉토리에 저장됨. 따라서 문제를 불러올때는
+    // 문제 디렉토리의 모든 파일들을 첨부 파일로 문제 본문 에디터와 해설 에디터에 전달함. 즉, 이 상황에서는
+    // `qData.attachments` 와 `aData.attachments` 가 중복된 파일을 포함하고 있을 가능성이 있음.
+    // 따라서 두 오브젝트를 하나로 합쳐 동일한 파일을 두 번 저장하는 것을 방지.
+    // (추후에 에디터가 필요한 첨부파일만 불러오는 기능을 구현한다면 이 코드는 불필요.)
+    const attachments = Object.assign(qData.attachments, aData.attachments);
+    for (const [name, blob] of Object.entries(attachments)) {
       await writeToHandle(qDirHandle, name, blob);
     }
 
