@@ -80,7 +80,10 @@ function initNewQuestion() {
 async function readQuestion() {
   if (!confirmDiscard()) return;
   try {
-    const qDirHandle = await window.showDirectoryPicker();
+    const qId = prompt("문제 ID를 입력해주세요");
+    if (!qId) return;
+
+    const qDirHandle = await archiveHandle!.getDirectoryHandle(qId);
 
     const metaText = await readFromHandle(qDirHandle, "meta.yml");
     if (metaText) {
