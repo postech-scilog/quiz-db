@@ -17,6 +17,7 @@
     "fix": "npx @biomejs/biome check --write"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.7.6",
     "@lexical/code": "^0.43.0",
     "@lexical/code-prism": "^0.43.0",
     "@lexical/extension": "^0.43.0",

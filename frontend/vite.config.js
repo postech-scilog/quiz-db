@@ -9,6 +9,7 @@ export default defineConfig({
       input: {
         main: resolve(import.meta.dirname, "src/index.html"),
         editor: resolve(import.meta.dirname, "src/editor/index.html"),
+        testMarkdownEditor: resolve(import.meta.dirname, "src/editor/test-markdown-editor.html"),
       },
     },
     chunkSizeWarningLimit: 1000,
