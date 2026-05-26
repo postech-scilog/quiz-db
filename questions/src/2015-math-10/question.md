@@ -1,0 +1,1 @@
+$\sum\limits_{n=1}\limits^\infty \frac n{(n+1)!}$의 값을 구하라.

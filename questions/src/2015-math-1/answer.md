@@ -1,0 +1,1 @@
+필즈상은 국제수학자연맹(International Congress of Mathematicians)에서 만 40세 미만의 뛰어난 수학자에게 수여하는 메달이다. 1936년 노르웨이의 오슬로에서 처음 수여되었다.
