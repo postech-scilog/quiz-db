@@ -1,0 +1,1 @@
+너비 L의 1차원 infinite potential wall 문제에서 zero point energy를 unncertainty principle을 이용하여 계산하여라
