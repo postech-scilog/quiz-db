@@ -1,0 +1,1 @@
+A car speeds down the highway with its stereo blasting. An observer with perfect pitch is standing by the roadside and, as the car approaches, notices that a musical note that should be 392Hz sounds like 420Hz. How fast is the car moving? (The velocity of the sound in the air is 350m/s)
