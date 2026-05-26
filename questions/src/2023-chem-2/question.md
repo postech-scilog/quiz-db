@@ -1,0 +1,1 @@
+Ethylamine, Diethylamine, Triethylamine 간의 염기도가 큰 순서대로 나열하시오.

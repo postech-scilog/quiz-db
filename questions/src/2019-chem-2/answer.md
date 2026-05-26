@@ -1,0 +1,3 @@
+주어진 반응은 conjugated diene과 substituted alkene, 즉 dienophile이 반응하여 cyclohexene 고리를 만드는 반응이다. 이는 대표적인 Diels-Alder reaction이다. Diels-Alder 반응은 [4+2] cycloaddition 반응이다. 여기서 conjugated diene은 4π 전자를 제공하고, dienophile은 2π 전자를 제공한다. 그 결과 여섯 원자로 이루어진 cyclohexene 유도체가 생성된다.
+
+그림에서도 diene과 alkene이 반응하여 고리형 alkene, 즉 cyclohexene 구조가 형성되고 있다. 또한 dienophile에 붙어 있던 두 R기의 상대적인 입체배치가 생성물에서도 유지된다. 즉, cis dienophile에서 출발하면 cis-substituted product가 생성되고, trans dienophile에서 출발하면 trans-substituted product가 생성된다. 따라서 이 반응은 Diels-Alder이다.
