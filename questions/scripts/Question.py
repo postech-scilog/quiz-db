@@ -1,5 +1,5 @@
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import urlsplit, unquote
 import yaml
 import mistune
 
@@ -22,7 +22,7 @@ class Question:
         self.try_load_meta()
         self.try_load_question()
         self.try_load_long_answer()
-        self.assets = set(p.resolve() for p in dir.iterdir() if p.name not in SPECIAL_FILES)
+        self.assets = set(unquote_path(p.resolve()) for p in dir.iterdir() if p.name not in SPECIAL_FILES)
         self.resolve_references()
 
     def try_load_meta(self):
@@ -112,9 +112,22 @@ def find_refs(ast, base: Path) -> set[Path]:
             url = urlsplit(token['attrs']['url'])
             if len(url.scheme) > 0:
                 continue
-            refs.add(Path(base, url.path).resolve())
+            refs.add(unquote_path(Path(base, url.path).resolve()))
         elif 'children' in token:
             for child in reversed(token['children']):
                 stack.append(child)
 
     return refs
+
+def unquote_path(p: Path) -> Path:
+    '''
+    주어진 `Path` 객체에서 URL 형식으로 인코딩된 부분을 모두 디코딩한다.
+
+    예시:
+    ```
+    >>> unquote_path(Path("ctiv61qrnhv-%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202026-05-14%20155349.png"))
+    PosixPath('ctiv61qrnhv-스크린샷 2026-05-14 155349.png')
+    ```
+    '''
+    
+    return Path(*[unquote(part) for part in p.parts])
