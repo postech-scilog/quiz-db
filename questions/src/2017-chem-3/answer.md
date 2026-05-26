@@ -1,0 +1,1 @@
+Heck reaction은 팔라듐 촉매와 염기 존재하에 불포화 할로젠화물과 알켄의 화학 반응으로 치환된 알켄을 형성한다.  Suzuki-Miyaura Cross coupling reaction은 팔라듐 촉매를 이용하여 유기 붕소 화합물과 유기 할로겐 화합물을 크로스 커플링 하는 반응이다. Stille cross-coupling reaction은 팔라듐 촉매를 사용하여 유기 주석 화합물과 유기 할록ㄴ화물을 결합시켜 새로운 탄소-탄소 결합을 형성하는 유기화학 반응이다. Jinquan Yu's C-H activtion은 팔라듐이 배향기의 도움을 받아 특정 C-H를 선택적으로 활성화해서 아무 치환기 없는 C-H를 직접 끊고 새 결합을 형성한다.

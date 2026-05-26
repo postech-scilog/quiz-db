@@ -1,0 +1,1 @@
+다음에 열거된 화학 반응에서 연상되는 원소가 무엇인지 답하시오. Heck reaction, Suzuki-Miyaura cross-coupling reaction, Stille cross-coupling reaction, Jinquan Yu's C-H activation
