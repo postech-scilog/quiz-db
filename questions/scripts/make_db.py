@@ -146,7 +146,8 @@ def convert_ref(
     따라 변환한다. 모든 첨부파일들은 `asset_base_dir` 디렉토리 내부에 존재해야 한다.
     """
     convert = mistune.create_markdown(
-        renderer=RefConverter(asset_base_dir, asset_mapping)
+        renderer=RefConverter(asset_base_dir, asset_mapping),
+        plugins=["math"]
     )
     return cast(str, convert(markdown_text))
 
@@ -178,6 +179,11 @@ class RefConverter(MarkdownRenderer):
         new_path = quote(str(self.asset_mapping[path]))
         return dict(token, attrs=dict(token["attrs"], url=new_path))
 
+    def inline_math(self, token, state):
+        return "$" + token["raw"] + "$"
+
+    def block_math(self, token, state):
+        return "$$" + token["raw"] + "$$"
 
 if __name__ == "__main__":
     main()
