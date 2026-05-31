@@ -1,3 +1,4 @@
+import cors from "cors";
 import express from "express";
 import helmet from "helmet";
 import pino from "pino";
@@ -16,6 +17,16 @@ app.use(
 		contentSecurityPolicy: false,
 	}),
 );
+
+if (process.env.NODE_ENV === "development") {
+	app.use(
+		cors(),
+		helmet.crossOriginResourcePolicy({
+			policy: "cross-origin",
+		}),
+	);
+}
+
 app.use(pinoHttp({ logger }));
 app.use(express.static("public")); // public 디렉토리의 파일 서빙, 404등 오류 발생 시 라우터로 fallthrough
 app.use("/", router);
