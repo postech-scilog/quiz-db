@@ -33,7 +33,7 @@ import sqlite3
 from pathlib import Path
 from typing import cast
 from Question import Question
-from urllib.parse import urlsplit
+from urllib.parse import urlsplit, quote, unquote
 import mistune
 from mistune.renderers.markdown import MarkdownRenderer
 
@@ -168,14 +168,14 @@ class RefConverter(MarkdownRenderer):
         return super().image(self.replace_asset_ref(token), state)
 
     def replace_asset_ref(self, token):
-        url = urlsplit(token["attrs"]["url"])
+        url = urlsplit(unquote(token["attrs"]["url"]))
         if len(url.scheme) > 0:
             return token
         if url.path.startswith("/assets"):
             return token
 
         path = Path(self.asset_base_dir, url.path).resolve()
-        new_path = str(self.asset_mapping[path])
+        new_path = quote(str(self.asset_mapping[path]))
         return dict(token, attrs=dict(token["attrs"], url=new_path))
 
 
