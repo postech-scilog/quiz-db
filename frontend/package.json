@@ -29,8 +29,12 @@
     "@lexical/table": "^0.43.0",
     "@lexical/utils": "^0.43.0",
     "@tailwindcss/vite": "^4.2.4",
+    "highlight.js": "^11.11.1",
     "js-yaml": "^4.1.1",
-    "katex": "^0.16.45",
-    "lexical": "^0.43.0"
+    "katex": "^0.16.47",
+    "lexical": "^0.43.0",
+    "marked": "^18.0.4",
+    "marked-highlight": "^2.2.4",
+    "marked-katex-extension": "^5.1.10"
   }
 }
