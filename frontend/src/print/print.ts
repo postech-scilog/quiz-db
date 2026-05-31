@@ -52,6 +52,7 @@ async function main() {
   renderHeader(subject);
 
   // 시험지의 문제들 렌더링
+  elems.article.textContent = "rendering...";
   const questions = await fetchQuestions(subject);
   questions.sort((x, y) => {
     // 우선 연도 역순으로 정렬
