@@ -11,4 +11,4 @@ lint:
 clean:
 	rm -rf questions.db
 	
-.PHONY: all lint clean
+.PHONY: all lint clean questions.db
